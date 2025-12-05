@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - OORO Minimal</title>
+    <title>Contact - OORO Minimal Final</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     
@@ -14,11 +14,11 @@
             --text-color: #ffffff;
             --font-serif: 'Instrument Serif', serif;
 
-            /* 이전 단계에서 적용된 폰트 크기 (1.95rem)를 현재 크기로 가정 */
-            --current-font-size: 1.95rem; 
+            /* 이전 단계의 최종 폰트 크기 (약 2.535rem) */
+            --previous-final-font-size: 2.535rem; 
             
-            /* 🚀 최종 텍스트 크기: 현재 크기(1.95rem) * 1.30 = 약 2.535rem */
-            --final-font-size: calc(var(--current-font-size) * 1.30);
+            /* 🚀 최종 텍스트 크기: 이전 크기 * 0.80 (20% 감소) = 약 2.028rem */
+            --final-font-size: calc(var(--previous-final-font-size) * 0.80);
         }
 
         body {
@@ -56,14 +56,14 @@
             /* 텍스트 간격 조정 */
             display: flex;
             flex-direction: column;
-            gap: 10px; /* 항목 간 간격 */
+            gap: 10px; /* 항목 간 기본 간격 */
         }
         
         /* OORO 제목 텍스트 (가장 윗줄) */
         .ooro-title {
             font-size: var(--final-font-size);
             margin: 0;
-            font-weight: bold; /* OORO를 강조 */
+            font-weight: bold; 
         }
 
         /* 웹사이트 링크 스타일 */
@@ -72,7 +72,8 @@
             text-decoration: underline;
             font-size: var(--final-font-size);
             display: block; 
-            margin-bottom: 20px; /* Contact us와 구분하기 위한 여백 */
+            /* 🚀 간격 띄우기: Contact us와 구분하기 위한 여백 증가 */
+            margin-bottom: 40px; 
             transition: color 0.3s ease;
         }
 
