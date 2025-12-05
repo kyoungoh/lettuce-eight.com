@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - OORO PNG Final</title>
+    <title>Contact - OORO Minimal Final</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     
@@ -14,21 +14,21 @@
             --text-color: #ffffff;
             --font-serif: 'Instrument Serif', serif;
 
-            /* 이전 단계의 최종 폰트 크기 (약 2.028rem) */
-            --current-font-size: 2.028rem; 
+            /* 이전 단계의 최종 폰트 크기 (약 2.535rem) */
+            --previous-final-font-size: 2.535rem; 
             
-            /* 🚀 최종 텍스트 크기: 현재 크기 * 0.70 (30% 감소) */
-            --final-font-size: calc(var(--current-font-size) * 0.70); /* 약 1.4196rem */
-
-            /* PNG 이미지 크기 (폰트 크기에 맞춰 비례적으로 설정) */
-            --logo-final-size: calc(var(--final-font-size) * 8); 
+            /* 🚀 최종 텍스트 크기: 이전 크기 * 0.80 (20% 감소) = 약 2.028rem */
+            --final-font-size: calc(var(--previous-final-font-size) * 0.80);
         }
 
         body {
+            /* Vanta 배경을 덮을 기본 설정 */
             position: relative; 
             font-family: var(--font-serif);
             margin: 0;
             text-align: center;
+
+            /* 🚀 콘텐츠를 화면 정중앙에 배치 */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -53,28 +53,27 @@
             position: relative;
             z-index: 10; 
             padding: 20px;
+            /* 텍스트 간격 조정 */
             display: flex;
             flex-direction: column;
             gap: 10px; /* 항목 간 기본 간격 */
         }
         
-        /* OORO 로고 이미지 스타일 */
-        .ooro-logo-img {
-            /* 로고 크기를 텍스트 크기에 맞춰 동적으로 조정 */
-            height: auto;
-            width: var(--logo-final-size); /* 폰트 크기에 비례 */
-            display: block;
-            margin: 0 auto;
-            margin-bottom: 5px; /* 링크와의 간격 조정 */
+        /* OORO 제목 텍스트 (가장 윗줄) */
+        .ooro-title {
+            font-size: var(--final-font-size);
+            margin: 0;
+            font-weight: bold; 
         }
 
         /* 웹사이트 링크 스타일 */
         .website-link {
             color: var(--text-color);
             text-decoration: underline;
-            font-size: var(--final-font-size); /* 30% 축소 적용 */
+            font-size: var(--final-font-size);
             display: block; 
-            margin-bottom: 40px; /* Contact us와 구분하기 위한 여백 */
+            /* 🚀 간격 띄우기: Contact us와 구분하기 위한 여백 증가 */
+            margin-bottom: 40px; 
             transition: color 0.3s ease;
         }
 
@@ -84,7 +83,7 @@
 
         /* Contact us 제목 스타일 */
         .title {
-            font-size: var(--final-font-size); /* 30% 축소 적용 */
+            font-size: var(--final-font-size); 
             margin: 0; 
             font-weight: normal; 
         }
@@ -92,7 +91,7 @@
         /* 이메일 링크 스타일 */
         .email-link {
             color: var(--text-color); 
-            font-size: var(--final-font-size); /* 30% 축소 적용 */
+            font-size: var(--final-font-size); 
             text-decoration: underline; 
             transition: color 0.3s ease;
             display: inline-block;
@@ -104,11 +103,8 @@
         
         /* 모바일 환경 크기 조정 */
         @media (max-width: 600px) {
-            .website-link, .title, .email-link {
+            .ooro-title, .website-link, .title, .email-link {
                 font-size: calc(var(--final-font-size) * 0.7);
-            }
-            .ooro-logo-img {
-                width: calc(var(--logo-final-size) * 0.7);
             }
         }
     </style>
@@ -117,7 +113,7 @@
     <div id="vanta-bg"></div> 
 
     <div class="content-group">
-        <img class="ooro-logo-img" src="ooro_logo.png" alt="OORO Logo">
+        <div class="ooro-title">OORO</div>
 
         <a href="https://www.oorosoju.com" class="website-link" target="_blank">
             www.oorosoju.com
