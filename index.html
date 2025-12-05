@@ -21,16 +21,18 @@
             --hover-color: #403932;
             --font-serif: 'Instrument Serif', serif;
 
-            /* 폰트 크기 변수 */
+            /* PC 텍스트 및 로고 크기 */
             --base-rem: 2.028rem; 
             --final-font-size: calc(var(--base-rem) * 1.04); 
             --logo-final-size: calc(var(--base-rem) * 4); 
             --footer-logo-width: calc(var(--final-font-size) * 6); 
-            --mobile-scale-factor: 0.98;
+
+            /* 🚀 2. 모바일 축소 비율 (기존 0.98에서 10% 추가 축소) */
+            --mobile-scale-factor: 0.882;
         }
 
         html, body {
-            /* 🚀 스크롤 제거 및 뷰포트 고정 */
+            /* 스크롤 제거 및 뷰포트 고정 */
             height: 100%;
             overflow: hidden; 
             margin: 0;
@@ -59,7 +61,7 @@
             z-index: 1; 
         }
 
-        /* 🚀 1. 투명도 레이어 스타일 */
+        /* 🚀 1. 투명도 레이어 스타일 (opacity 0.95로 변경) */
         #vanta-bg-overlay {
             position: fixed;
             top: 0;
@@ -67,8 +69,8 @@
             width: 100%;
             height: 100%;
             background-color: #262321; 
-            opacity: 0.8; /* 투명도 20% (불투명도 80%) */
-            z-index: 2; /* Vanta 위에, 콘텐츠 아래에 위치 */
+            opacity: 0.95; /* 투명도 5% (불투명도 95%) */
+            z-index: 2; 
         }
 
 
@@ -135,7 +137,7 @@
             color: var(--hover-color); 
         }
         
-        /* 모바일 환경 크기 조정 */
+        /* 모바일 환경 크기 조정 (축소 비율 0.882 적용) */
         @media (max-width: 600px) {
             .website-link, .title, .email-link {
                 font-size: calc(var(--final-font-size) * var(--mobile-scale-factor));
