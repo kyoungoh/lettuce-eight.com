@@ -18,20 +18,23 @@
         :root {
             --bg-color: #403932;
             --text-color: #ffffff;
+            --hover-color: #403932; /* 🚀 호버 컬러 설정 */
             --font-serif: 'Instrument Serif', serif;
 
-            /* 폰트 크기 변수 (이전 단계의 최종 값) */
-            --current-font-size-base: 2.028rem; 
-            --current-font-size-effective: calc(var(--current-font-size-base) * 1.30 * 0.70); /* 약 1.845rem */
-            --current-logo-size-base: calc(var(--current-font-size-base) * 8);
+            /* 폰트 크기 변수 (OBS = 2.028rem) */
+            --base-rem: 2.028rem; 
 
-            /* 🚀 2. 모든 텍스트 크기: 현재 크기 * 0.80 (20% 축소) */
-            --final-font-size: calc(var(--current-font-size-effective) * 0.80); 
+            /* PC 텍스트 최종 크기: (OBS * 1.3) * 0.8 = OBS * 1.04 */
+            --final-font-size: calc(var(--base-rem) * 1.04); 
 
-            /* 🚀 1. OORO 로고 크기: 현재 크기 * 0.50 (50% 축소) */
-            --logo-final-size: calc(var(--current-logo-size-base) * 0.50); 
+            /* PC OORO 로고 최종 크기: (OBS * 8) * 0.5 = OBS * 4 */
+            --logo-final-size: calc(var(--base-rem) * 4); 
             
-            --footer-logo-width: calc(var(--final-font-size) * 6);
+            /* Lettuce Eight 로고 크기 */
+            --footer-logo-width: calc(var(--final-font-size) * 6); 
+
+            /* 모바일 스케일 팩터 (0.7 * 1.4 = 0.98) */
+            --mobile-scale-factor: 0.98;
         }
 
         body {
@@ -71,7 +74,7 @@
         /* OORO 로고 이미지 스타일 (가운데 정렬) */
         .ooro-logo-img {
             height: auto;
-            width: var(--logo-final-size); /* 🚀 50% 축소 적용 */
+            width: var(--logo-final-size); 
             display: block;
             margin: 0 auto 5px auto; 
         }
@@ -86,6 +89,7 @@
             
             width: var(--footer-logo-width); 
             height: auto;
+            /* opacity 제거됨 */
         }
 
 
@@ -93,19 +97,19 @@
         .website-link {
             color: var(--text-color);
             text-decoration: underline;
-            font-size: var(--final-font-size); /* 🚀 20% 축소 적용 */
+            font-size: var(--final-font-size); 
             display: block; 
             margin-bottom: 40px; 
             transition: color 0.3s ease;
         }
-
+        /* 🚀 호버 컬러 변경 */
         .website-link:hover {
-            color: #ccc;
+            color: var(--hover-color); 
         }
 
         /* Contact us 제목 스타일 */
         .title {
-            font-size: var(--final-font-size); /* 🚀 20% 축소 적용 */
+            font-size: var(--final-font-size); 
             margin: 0; 
             font-weight: normal; 
         }
@@ -113,26 +117,26 @@
         /* 이메일 링크 스타일 */
         .email-link {
             color: var(--text-color); 
-            font-size: var(--final-font-size); /* 🚀 20% 축소 적용 */
+            font-size: var(--final-font-size); 
             text-decoration: underline; 
             transition: color 0.3s ease;
             display: inline-block;
         }
-
+        /* 🚀 호버 컬러 변경 */
         .email-link:hover {
-            color: #ccc; 
+            color: var(--hover-color); 
         }
         
-        /* 모바일 환경 크기 조정 */
+        /* 🚀 모바일 환경 크기 조정 (현재 크기에서 40% 추가 확대, 즉 PC 크기의 98% 적용) */
         @media (max-width: 600px) {
             .website-link, .title, .email-link {
-                font-size: calc(var(--final-font-size) * 0.7);
+                font-size: calc(var(--final-font-size) * var(--mobile-scale-factor));
             }
             .ooro-logo-img {
-                width: calc(var(--logo-final-size) * 0.7);
+                width: calc(var(--logo-final-size) * var(--mobile-scale-factor));
             }
             .footer-logo-img {
-                width: calc(var(--footer-logo-width) * 0.7);
+                width: calc(var(--footer-logo-width) * var(--mobile-scale-factor));
             }
         }
     </style>
