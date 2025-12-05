@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Lettuce Eight</title>
+    <title>Contact - Ooro Soju</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     
     <style>
         /* 기본 설정 및 색상 변수 */
         :root {
-            /* Vanta.js가 배경을 담당하므로, body 배경색은 Vanta baseColor와 유사하게 설정 */
-            --bg-color: #403932; 
-            --text-color: #b4b0a7;
+            --bg-color: #403932; /* Vanta 로드 전 기본 배경색 */
+            --text-color: #ffffff; /* 모든 텍스트를 흰색으로 변경 */
             --font-serif: 'Instrument Serif', serif;
         }
 
@@ -23,19 +22,18 @@
             text-align: center;
         }
 
-        /* 1. Vanta 배경 컨테이너 스타일 */
+        /* Vanta 배경 컨테이너 스타일 */
         #vanta-bg {
-            position: fixed; /* 배경 전체를 덮도록 고정 */
+            position: fixed; 
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            /* Vanta 로드 전 기본 배경색을 지정해 부자연스러움을 막습니다. */
             background-color: var(--bg-color); 
-            z-index: 1; /* 가장 아래에 위치 */
+            z-index: 1; 
         }
 
-        /* 2. 중앙 콘텐츠 스타일 (Vanta 위에 표시되도록 Z-index 높게 설정) */
+        /* 중앙 콘텐츠 스타일 */
         .content-container {
             position: relative;
             z-index: 10; 
@@ -45,27 +43,94 @@
             align-items: center;
             height: 100vh;
             color: var(--text-color);
+            padding: 20px;
         }
 
-        /* 폰트 및 링크 스타일은 이전과 동일 */
+        /* ---------------------------------- */
+        /* 새로운 디자인 요소 스타일 */
+        /* ---------------------------------- */
+        
+        /* 1. 로고 스타일 */
+        .logo-container {
+            margin-bottom: 20px;
+        }
+        .logo-svg {
+            /* 원본 SVG의 크기를 고려하여 화면에 적절히 보이도록 크기 지정 */
+            width: 150px; 
+            height: auto;
+            display: block;
+        }
+        
+        /* 2. 메인 웹사이트 링크 스타일 */
+        .website-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+            display: block; 
+        }
+        .website-link:hover {
+            text-decoration: underline;
+        }
+
+        /* 3. 구분선 스타일 */
+        .divider {
+            width: 80%; /* 가로 80% */
+            height: 1px; /* 아주 얇은 라인 */
+            background-color: var(--text-color); /* 흰색 */
+            margin: 30px auto; /* 상하 간격 및 중앙 정렬 */
+        }
+
+        /* 4. Contact us 제목 스타일 */
         .title {
             font-size: 3.5rem;
             margin-bottom: 0.5em; 
             font-weight: normal; 
         }
-
+        
+        /* 5. 이메일 링크 및 일렁이는 밑줄 효과 */
         .email-link {
             color: var(--text-color); 
-            text-decoration: none; 
             font-size: 2.5rem; 
             transition: color 0.3s;
+            
+            /* 일렁이는 밑줄 효과를 위한 설정 */
+            position: relative;
+            display: inline-block;
+            text-decoration: none; /* 기본 HTML 밑줄 제거 */
+            padding-bottom: 5px; /* 밑줄과 텍스트 간격 확보 */
+            border-bottom: 2px solid var(--text-color); /* 기본 밑줄 */
         }
 
+        /* 마우스 오버 시 밑줄 일렁이는 애니메이션 */
         .email-link:hover {
-            color: #ffffff;
-            text-decoration: underline;
+            color: #ccc;
+            /* 마우스 오버 시 기본 밑줄 투명하게 */
+            border-bottom-color: transparent; 
+        }
+        
+        /* 가상 요소로 동적인 밑줄 효과 구현 */
+        .email-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-color);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-in-out, opacity 0.3s;
+            transform: scaleX(1); /* 기본적으로 밑줄이 보이게 */
+            opacity: 1;
         }
 
+        .email-link:hover::after {
+            /* 밑줄이 일렁이거나 움직이는 효과 (여기서는 살짝 커지면서 깜빡이는 효과) */
+            transform: scaleX(1.1); 
+            opacity: 0.8;
+        }
+        
+        /* 모바일 환경을 위한 글꼴 크기 조정 */
         @media (max-width: 600px) {
             .title {
                 font-size: 2.5rem;
@@ -80,35 +145,3 @@
     <div id="vanta-bg"></div> 
 
     <div class="content-container">
-        <div class="title">Contact us</div>
-        <a href="mailto:lettuce@lettuce-eight.com" class="email-link">
-            lettuce@lettuce-eight.com
-        </a>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
-    
-    <script>
-        // 페이지가 로드되자마자 Vanta 효과 실행
-        window.addEventListener('load', () => {
-            if (window.VANTA) {
-                window.VANTA.FOG({
-                    // 선택자를 새 ID에 맞게 수정
-                    el: "#vanta-bg", 
-                    mouseControls: true,
-                    touchControls: true,
-                    gyroControls: false,
-                    minHeight: 200.00,
-                    minWidth: 200.00,
-                    highlightColor: 0x936c0c, // 강조 색상
-                    midtoneColor: 0xe3bd38, // 중간 색상
-                    lowlightColor: 0xc5c8c2, // 어두운 색상
-                    baseColor: 0x897755, // 기본 안개 색상
-                    zoom: 0.60
-                });
-            }
-        });
-    </script>
-</body>
-</html>
