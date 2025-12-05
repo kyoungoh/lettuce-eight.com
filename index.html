@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Final Minimal</title>
+    <title>Contact - OORO Minimal</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     
@@ -11,11 +11,14 @@
         /* 기본 설정 및 색상 변수 */
         :root {
             --bg-color: #403932;
-            --text-color: #ffffff; /* 흰색으로 유지 */
+            --text-color: #ffffff;
             --font-serif: 'Instrument Serif', serif;
 
-            /* 최종 텍스트 크기: 이전 요청에 따른 최대 확대 크기 유지 */
-            --final-font-size: 1.95rem; /* calc(1.2rem * 1.95) 대략 230% 크기 */
+            /* 이전 단계에서 적용된 폰트 크기 (1.95rem)를 현재 크기로 가정 */
+            --current-font-size: 1.95rem; 
+            
+            /* 🚀 최종 텍스트 크기: 현재 크기(1.95rem) * 1.30 = 약 2.535rem */
+            --final-font-size: calc(var(--current-font-size) * 1.30);
         }
 
         body {
@@ -45,17 +48,42 @@
             z-index: 1; 
         }
 
-        /* 중앙 콘텐츠 그룹 (가장 상위 요소인 body가 중앙 정렬을 담당) */
+        /* 중앙 콘텐츠 그룹 */
         .content-group {
             position: relative;
             z-index: 10; 
             padding: 20px;
+            /* 텍스트 간격 조정 */
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* 항목 간 간격 */
         }
         
+        /* OORO 제목 텍스트 (가장 윗줄) */
+        .ooro-title {
+            font-size: var(--final-font-size);
+            margin: 0;
+            font-weight: bold; /* OORO를 강조 */
+        }
+
+        /* 웹사이트 링크 스타일 */
+        .website-link {
+            color: var(--text-color);
+            text-decoration: underline;
+            font-size: var(--final-font-size);
+            display: block; 
+            margin-bottom: 20px; /* Contact us와 구분하기 위한 여백 */
+            transition: color 0.3s ease;
+        }
+
+        .website-link:hover {
+            color: #ccc;
+        }
+
         /* Contact us 제목 스타일 */
         .title {
             font-size: var(--final-font-size); 
-            margin-bottom: 0.5em; 
+            margin: 0; 
             font-weight: normal; 
         }
         
@@ -63,18 +91,18 @@
         .email-link {
             color: var(--text-color); 
             font-size: var(--final-font-size); 
-            text-decoration: underline; /* 밑줄 유지 */
+            text-decoration: underline; 
             transition: color 0.3s ease;
-            display: inline-block; /* hover 효과를 위해 */
+            display: inline-block;
         }
 
         .email-link:hover {
-            color: #ccc; /* 마우스 오버 시 색상 변화 */
+            color: #ccc; 
         }
         
         /* 모바일 환경 크기 조정 */
         @media (max-width: 600px) {
-            .title, .email-link {
+            .ooro-title, .website-link, .title, .email-link {
                 font-size: calc(var(--final-font-size) * 0.7);
             }
         }
@@ -84,6 +112,12 @@
     <div id="vanta-bg"></div> 
 
     <div class="content-group">
+        <div class="ooro-title">OORO</div>
+
+        <a href="https://www.oorosoju.com" class="website-link" target="_blank">
+            www.oorosoju.com
+        </a>
+
         <div class="title">Contact us</div>
         
         <a href="mailto:lettuce@lettuce-eight.com" class="email-link">
