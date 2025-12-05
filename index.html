@@ -20,14 +20,18 @@
             --text-color: #ffffff;
             --font-serif: 'Instrument Serif', serif;
 
-            /* 폰트 크기 변수: 
-               이전 --current-font-size (2.028rem) 기준
-               30% 증가 (1.3배) = 2.6364rem
-            */
-            --current-font-size: 2.028rem; 
-            --final-font-size: calc(var(--current-font-size) * 1.3); /* 🚀 폰트 크기 30% 증가 */
-            --logo-final-size: calc(var(--final-font-size) * 8); 
-            --footer-logo-width: calc(var(--final-font-size) * 6); /* Lettuce Eight 로고 크기 */
+            /* 폰트 크기 변수 (이전 단계의 최종 값) */
+            --current-font-size-base: 2.028rem; 
+            --current-font-size-effective: calc(var(--current-font-size-base) * 1.30 * 0.70); /* 약 1.845rem */
+            --current-logo-size-base: calc(var(--current-font-size-base) * 8);
+
+            /* 🚀 2. 모든 텍스트 크기: 현재 크기 * 0.80 (20% 축소) */
+            --final-font-size: calc(var(--current-font-size-effective) * 0.80); 
+
+            /* 🚀 1. OORO 로고 크기: 현재 크기 * 0.50 (50% 축소) */
+            --logo-final-size: calc(var(--current-logo-size-base) * 0.50); 
+            
+            --footer-logo-width: calc(var(--final-font-size) * 6);
         }
 
         body {
@@ -67,22 +71,21 @@
         /* OORO 로고 이미지 스타일 (가운데 정렬) */
         .ooro-logo-img {
             height: auto;
-            width: var(--logo-final-size);
+            width: var(--logo-final-size); /* 🚀 50% 축소 적용 */
             display: block;
-            margin: 0 auto 5px auto; /* 가운데 정렬 및 아래 간격 */
+            margin: 0 auto 5px auto; 
         }
         
         /* Lettuce Eight 로고 스타일 (푸터 정렬) */
         .footer-logo-img {
-            position: fixed; /* 뷰포트에 고정 */
-            bottom: 20px; /* 하단에서 20px 마진 */
-            left: 50%; /* 가로 50% 위치 */
-            transform: translateX(-50%); /* 정확한 가로 중앙 정렬 */
-            z-index: 5; /* 배경 위에, 메인 콘텐츠 아래에 배치 */
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
             
             width: var(--footer-logo-width); 
             height: auto;
-            /* 🚀 투명도(opacity: 0.7;) 제거 완료 */
         }
 
 
@@ -90,7 +93,7 @@
         .website-link {
             color: var(--text-color);
             text-decoration: underline;
-            font-size: var(--final-font-size); 
+            font-size: var(--final-font-size); /* 🚀 20% 축소 적용 */
             display: block; 
             margin-bottom: 40px; 
             transition: color 0.3s ease;
@@ -102,7 +105,7 @@
 
         /* Contact us 제목 스타일 */
         .title {
-            font-size: var(--final-font-size); 
+            font-size: var(--final-font-size); /* 🚀 20% 축소 적용 */
             margin: 0; 
             font-weight: normal; 
         }
@@ -110,7 +113,7 @@
         /* 이메일 링크 스타일 */
         .email-link {
             color: var(--text-color); 
-            font-size: var(--final-font-size); 
+            font-size: var(--final-font-size); /* 🚀 20% 축소 적용 */
             text-decoration: underline; 
             transition: color 0.3s ease;
             display: inline-block;
