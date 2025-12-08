@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OORO | Contact</title>
+    <title>Lettuce Eight</title>
     
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
     <meta property="og:title" content="Lettuce Eight">
     <meta property="og:description" content="Contact us via lettuce@lettuce-eight.com">
     <meta property="og:type" content="website">
@@ -21,11 +23,13 @@
             --hover-color: #403932;
             --font-serif: 'Instrument Serif', serif;
 
-            /* 폰트 크기 변수 */
+            /* PC 텍스트 및 로고 크기 */
             --base-rem: 2.028rem; 
             --final-font-size: calc(var(--base-rem) * 1.04); 
             --logo-final-size: calc(var(--base-rem) * 4); 
             --footer-logo-width: calc(var(--final-font-size) * 6); 
+
+            /* 모바일 축소 비율 (0.882) */
             --mobile-scale-factor: 0.882;
         }
 
@@ -59,7 +63,7 @@
             z-index: 1; 
         }
 
-        /* 🚀 투명도 레이어 스타일 (opacity: 0.05로 수정) */
+        /* 투명도 레이어 스타일 (opacity 0.05) */
         #vanta-bg-overlay {
             position: fixed;
             top: 0;
@@ -67,7 +71,7 @@
             width: 100%;
             height: 100%;
             background-color: #262321; 
-            opacity: 0.05; /* 🚀 5%만 불투명 (매우 옅음) */
+            opacity: 0.05; 
             z-index: 2; 
         }
 
@@ -117,83 +121,3 @@
         }
 
         /* Contact us 제목 스타일 */
-        .title {
-            font-size: var(--final-font-size); 
-            margin: 0; 
-            font-weight: normal; 
-        }
-        
-        /* 이메일 링크 스타일 */
-        .email-link {
-            color: var(--text-color); 
-            font-size: var(--final-font-size); 
-            text-decoration: underline; 
-            transition: color 0.3s ease;
-            display: inline-block;
-        }
-        .email-link:hover {
-            color: var(--hover-color); 
-        }
-        
-        /* 모바일 환경 크기 조정 */
-        @media (max-width: 600px) {
-            .website-link, .title, .email-link {
-                font-size: calc(var(--final-font-size) * var(--mobile-scale-factor));
-            }
-            .ooro-logo-img {
-                width: calc(var(--logo-final-size) * var(--mobile-scale-factor));
-            }
-            .footer-logo-img {
-                width: calc(var(--footer-logo-width) * var(--mobile-scale-factor));
-            }
-        }
-    </style>
-</head>
-<body>
-    <div id="vanta-bg"></div> 
-    
-    <div id="vanta-bg-overlay"></div>
-
-    <div class="content-group">
-        <img class="ooro-logo-img" src="ooro.png" alt="OORO Logo">
-
-        <a href="https://www.oorosoju.com" class="website-link" target="_blank">
-            www.oorosoju.com
-        </a>
-
-        <div class="title">Contact us</div>
-        
-        <a href="mailto:lettuce@lettuce-eight.com" class="email-link">
-            lettuce@lettuce-eight.com
-        </a>
-        
-    </div>
-
-    <img class="footer-logo-img" src="lettuceeight.png" alt="Lettuce Eight Logo">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
-    
-    <script>
-        window.addEventListener('load', () => {
-            if (window.VANTA) {
-                window.VANTA.FOG({
-                    el: "#vanta-bg", 
-                    mouseControls: true,
-                    touchControls: true,
-                    gyroControls: false,
-                    minHeight: 200.00,
-                    minWidth: 200.00,
-                    highlightColor: 0xffffff,
-                    midtoneColor: 0xdcc72f,
-                    lowlightColor: 0xc5c8c2,
-                    baseColor: 0x897755,
-                    zoom: 0.60
-                });
-            } else {
-                console.warn("VANTA.js failed to load. The background effect will not be visible.");
-            }
-        });
-    </script>
-</body>
-</html>
